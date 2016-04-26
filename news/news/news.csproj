@@ -111,9 +111,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HelpClass.cs" />
     <Compile Include="Migrations\201604260648295_init.cs" />
     <Compile Include="Migrations\201604260648295_init.Designer.cs">
       <DependentUpon>201604260648295_init.cs</DependentUpon>
@@ -139,6 +141,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Test\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604260648295_init.resx">
