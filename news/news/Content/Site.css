@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #333;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -16,3 +17,46 @@ textarea {
     max-width: 280px;
 }
 
+.container-narrow {
+        margin: 0 auto;
+        max-width: 800px;
+			
+}
+.colornv{
+	border: 2px solid;
+	
+}
+body {
+	background-color: #333;	
+}
+
+.rowfix {
+	background-color: white;
+	margin: auto;
+	margin-bottom: 15px;
+		
+}
+.divnews  {
+	padding: 0;
+}
+.picc {
+	width: 100%;
+}
+#divtext{
+	font-family: 'Helvetica Neue', arial, sans-serif;
+	padding: 15px;
+	color:black;
+}
+div h2 {
+	padding: 15px;
+}
+hr {
+	margin: 0 auto;
+    color: #888;
+    
+}
+.tagme {
+    font-family: inherit;
+	padding: 15px;
+    
+}

@@ -4,37 +4,84 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/navbar.css" rel="stylesheet" type="text/css" />
+    
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+    <nav class="[ navbar navbar-fixed-top navbar-invers ][ navbar-bootsnipp animate ]" role="navigation">
+        <div class="[ container ]">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="[ navbar-header ]">
+                <button type="button" class="[ navbar-toggle ]" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="[ sr-only ]">Toggle navigation</span>
+                    <span class="[ icon-bar ]"></span>
+                    <span class="[ icon-bar ]"></span>
+                    <span class="[ icon-bar ]"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="[ animbrand ]">
+                    <a class="[ navbar-brand ][ animate ]" href="#">Newster</a>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="[ collapse navbar-collapse ]" id="bs-example-navbar-collapse-1">
+                <ul class="[ nav navbar-nav navbar-right ]">
+                    <li class="[ visible-xs ]">
+                        <form action="" method="GET" role="search">
+                            <div class="[ input-group ]">
+                                <input type="text" class="[ form-control ]" name="q" placeholder="Search here!">
+                                <span class="[ input-group-btn ]">
+                                    <button class="[ btn btn-primary ]" type="submit"><span class="[ glyphicon glyphicon-search ]"></span></button>
+                                    <button class="[ btn btn-danger ]" type="reset"><span class="[ glyphicon glyphicon-remove ]"></span></button>
+                                </span>
+                            </div>
+                        </form>
+                    </li>
+                    <li>
+                        <a href="#" class="[ dropdown-toggle ][ animate ]" data-toggle="dropdown"><strong>Category</strong><span class="[ caret ]"></span></a>
+                        <ul class="[ dropdown-menu ]" role="menu">
+                            <li><a href="#" class="[ animate ]">E-Sport <span class="[ pull-right glyphicon glyphicon-pencil ]"></span></a></li>
+                            <li><a href="#" class="[ animate ]">Oldie <span class="[ pull-right glyphicon glyphicon-align-justify ]"></span></a></li>
+                            <li><a href="#" class="[ animate ]">History <span class="[ pull-right glyphicon glyphicon-cloud-download ]"></span></a></li>
+                            <li><a href="#" class="[ animate ]">Random Shit <span class="[ pull-right glyphicon glyphicon-shopping-cart ]"></span></a></li>
+                            <li><a href="#" class="[ animate ]">Hello? <span class="[ pull-right glyphicon glyphicon-tasks ]"></span></a></li>
+                            <li><a href="#" class="[ animate ]">Yes <span class="[ pull-right glyphicon glyphicon-edit ]"></span></a></li>
+                        </ul>
+                    </li>
+                    <li><a class="animate" href="#register">Register</a></li>
+                    <li><a class="animate" href="#login">Login</a></li>
+                    <li class="[ hidden-xs ]"><a href="#toggle-search" class="[ animate ]"><span class="[ glyphicon glyphicon-search ]"></span></a></li>
                 </ul>
             </div>
         </div>
-    </div>
+        <div class="[ bootsnipp-search animate ]">
+            <div class="[ container ]">
+                <form action="" method="GET" role="search">
+                    <div class="[ input-group ]">
+                        <input type="text" class="[ form-control ]" name="q" placeholder="Search and hit enter :D">
+                        <span class="[ input-group-btn ]">
+                            <button class="[ btn btn-danger ]" type="reset"><span class="[ glyphicon glyphicon-remove ]"></span></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
 
-    <div class="container body-content">
+    <div class="container-narrow">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p style="color: white;">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
 </body>
 </html>
