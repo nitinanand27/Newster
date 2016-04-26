@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using news.Models;
+using System.Web.Mvc;
 
 namespace news.Controllers
 {
@@ -7,8 +8,11 @@ namespace news.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            
-            return View();
+            using (NewsterContext nc = new NewsterContext())
+            {
+                
+            }
+                return View();
         }
     }
 }
