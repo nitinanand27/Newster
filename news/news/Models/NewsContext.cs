@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace news.Model
+namespace news.Models
 {
 
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
