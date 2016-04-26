@@ -4,8 +4,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
-namespace TestProject
+namespace news.Models
 {
 
     class HelpClass
@@ -33,6 +34,25 @@ namespace TestProject
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Use to validate email-adress entered by the user when registering.
+        /// </summary>
+        /// <param name="pEmail">Email adress to valiadet</param>
+        /// <returns>True/False</returns>
+        public static bool ValidateEmail(string pEmail)
+        {
+            try
+            {
+                MailAddress tmpMail = new MailAddress(pEmail);
+                return true;
+            }
+
+            catch
+            {
+                return false;
+            }
         }
     }
 }
