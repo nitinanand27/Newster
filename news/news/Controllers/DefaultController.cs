@@ -19,7 +19,17 @@ namespace news.Controllers
         {
             using (NewsterContext context = new NewsterContext())
             {
-                return View(context.Articles.ToList());
+                var list = context.Articles.ToList();
+
+                foreach (var item in list)
+                {
+                    item.User = (from x in context.Users
+                                 where x.UserId == item.Author
+                                 select x).First();
+                }
+
+
+                return View(list);
             }
         }
  
@@ -37,20 +47,20 @@ namespace news.Controllers
                 var searchResult = articleList.Where(n => (n.Heading.ToLower().Contains(searchString.ToLower())) ||
                 (n.Text.ToLower().Contains(searchString.ToLower())) || (n.Categories.Where(y => y.Name.ToLower().Contains(searchString.ToLower())).Count() > 0) || (n.User.UserName.ToLower().Contains(searchString.ToLower())));
 
-                List<Article> searchArticles = new List<Article>();
-
                 foreach (var item in searchResult)
                 {
-                    searchArticles.Add(item);
+                    item.User = (from x in context.Users
+                                 where x.UserId == item.Author
+                                 select x).First();
                 }
                 
-                if (searchArticles.Count()!=0)
+                if (searchResult.Count()!=0)
                 {
-                    return View("Index", searchArticles);
+                    return View("Index", searchResult);
                 }
             }
-            return RedirectToAction("Index");
-            
+
+            return RedirectToAction("Index");            
 
         }
     }
