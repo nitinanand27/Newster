@@ -2,17 +2,72 @@
 @{
     ViewBag.Title = "Login";
 }
+<div class="form">
 
-<h2>Login</h2>
+    <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Register</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
 
-<form action="Login" method="post">
+    <div class="tab-content">
+        <div id="signup">
+            <h1>Sign Up Now</h1>
 
-    <input type="text" name="Username" placeholder="Username" value="" />
-    <label for="Username">Username</label>
-    <br />
+            <form action="/" method="post">
 
-    <input type="password" name="Password" placeholder="Password" value="" />
-    <label for="Password">Password</label>
-    <button type="submit">Login!</button>
+                <div class="field-wrap">
+                    <div class="field-wrap">
+                        <label>
+                            Username<span class="req">*</span>
+                        </label>
+                        <input type="text" required autocomplete="off" />
+                    </div>
 
-</form>
+                </div>
+                <div class="field-wrap">
+                    <label>
+                        Email Address<span class="req">*</span>
+                    </label>
+                    <input type="email" required autocomplete="off" />
+                </div>
+
+                <div class="field-wrap">
+                    <label>
+                        Set A Password<span class="req">*</span>
+                    </label>
+                    <input type="password" required autocomplete="off" />
+                </div>
+
+                <button type="submit" class="button button-block">Create Account</button>
+
+            </form>
+        </div>
+
+        <div id="login">
+            <h1>Welcome Back!</h1>
+
+            <form action="/" method="post">
+
+                <div class="field-wrap">
+                    <label>
+                        Username<span class="req">*</span>
+                    </label>
+                    <input type="text" required autocomplete="off" />
+                </div>
+
+                <div class="field-wrap">
+                    <label>
+                        Password<span class="req">*</span>
+                    </label>
+                    <input type="password" required autocomplete="off" />
+                </div>
+
+
+                <button class="button button-block">Log In</button>
+
+            </form>
+        </div>
+
+    </div><!-- tab-content -->
+
+</div> <!-- /form -->
