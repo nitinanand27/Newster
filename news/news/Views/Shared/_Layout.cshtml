@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Newster AB</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/navbar.css" rel="stylesheet" type="text/css" />
-    
+
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
                     <span class="[ icon-bar ]"></span>
                 </button>
                 <div class="[ animbrand ]">
-                    <a class="[ navbar-brand ][ animate ]" href="#">Newster</a>
+                    <a class="[ navbar-brand ][ animate ]" href="/Default/Index">Newster</a>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="[ collapse navbar-collapse ]" id="bs-example-navbar-collapse-1">
                 <ul class="[ nav navbar-nav navbar-right ]">
                     <li class="[ visible-xs ]">
-                        <form action="" method="GET" role="search">
+                        <form action="" method="get" role="search">
                             <div class="[ input-group ]">
                                 <input type="text" class="[ form-control ]" name="q" placeholder="Search here!">
                                 <span class="[ input-group-btn ]">
@@ -59,24 +59,24 @@
         </div>
         <div class="[ bootsnipp-search animate ]">
             <div class="[ container ]">
-                <form action="" method="GET" role="search">
+                <form action="/Default/Search" method="post" role="search">
                     <div class="[ input-group ]">
-                        <input type="text" class="[ form-control ]" name="q" placeholder="Search and hit enter :D">
+                        <input type="text" class="[ form-control ]" name="searchString" placeholder="Search and hit enter :D">
                         <span class="[ input-group-btn ]">
-                            <button class="[ btn btn-danger ]" type="reset"><span class="[ glyphicon glyphicon-remove ]"></span></button>
+                            <button class="[ btn btn-danger ]" type="submit"><span class="[ glyphicon glyphicon-remove ]"></span></button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
     </nav>
-    
+
 
     <div class="container-narrow">
         @RenderBody()
         <hr />
         <footer>
-            <p style="color: white;">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p style="color: white;">&copy; @DateTime.Now.Year - Newster AB</p>
         </footer>
     </div>
 
