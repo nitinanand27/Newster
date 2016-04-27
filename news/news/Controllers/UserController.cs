@@ -9,13 +9,8 @@ namespace news.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
-        public ActionResult Index()
-        {
 
-            return View();
-        }
-
+        [HttpPost]
         public ActionResult RegisterUser()
         {
 
@@ -39,30 +34,36 @@ namespace news.Controllers
             return RedirectToAction("/Default/Index");
         }
 
+        [HttpPost]
         public ActionResult Login()
         {
-
-            string tmpUsername = Request["LoinInput"];
+            ///Get values from the form entered by the user in /Default/Login.cshtml
+            string tmpUsername = Request["LoginInput"];
             string tmpPassword = HelpClass.Encrypt(Request["PasswordInput"]);
             
+            ///Connect to db
             using(NewsterContext nc = new NewsterContext())
             {
+                ///Find user
                 var tmpUserList = nc.Users.Where(x => x.UserName == tmpUsername);
 
+                ///Check if there is a user and the password matches
                 if (tmpUserList.Count() == 1 && tmpUserList.First().Password == tmpPassword)
                 {
+                    ///Set session values
                     Session["currentUserId"] = tmpUserList.First().UserId;
                     Session["currentUsername"] = tmpUserList.First().UserName;
                     Session["loginStatus"] = true;
                 }
             }
 
+            ///Return to index
             return RedirectToAction("/Default/Index");
         }
 
         public ActionResult Logout()
         {
-
+            ///reset session values
             Session["currentUserId"] = "";
             Session["currentUsername"] = "";
             Session["loginStatus"] = false;
