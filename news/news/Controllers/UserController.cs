@@ -14,50 +14,68 @@ namespace news.Controllers
         public ActionResult RegisterUser()
         {
 
-            string tmpUsername = "";
-            string tmpEmail = "";
+            ///Get values from the form entered by the user in /Default/Login.cshtml
+            string tmpUsername = Request["registerUsername"];
+            string tmpEmail = Request["registerEmail"];
             string tmpPassword = HelpClass.Encrypt("");
 
             ///Check entries
-            if(tmpUsername.Length>2 && HelpClass.ValidateEmail(tmpEmail) && tmpPassword.Length > 6)
+            try
             {
-                ///Connect to dB and create user
-                using (NewsterContext nc = new NewsterContext())
+                if (tmpUsername.Length > 2 && HelpClass.ValidateEmail(tmpEmail))
                 {
+                    ///Connect to dB and create user
+                    using (NewsterContext nc = new NewsterContext())
+                    {
 
-                    User tmpUser = new User() { UserName = tmpUsername, Email = tmpEmail, Password = tmpPassword };
-                    nc.Users.Add(tmpUser);
-                    nc.SaveChanges();
+                        User tmpUser = new User() { UserName = tmpUsername, Email = tmpEmail, Password = tmpPassword };
+                        nc.Users.Add(tmpUser);
+                        nc.SaveChanges();
+                    }
                 }
             }
 
+            catch
+            {
+                ///Return to login/register -view to try again
+                return RedirectToAction("/Default/Login");
+            }
+
             return RedirectToAction("/Default/Index");
+
         }
 
         [HttpPost]
         public ActionResult Login()
         {
             ///Get values from the form entered by the user in /Default/Login.cshtml
-            string tmpUsername = Request["LoginInput"];
-            string tmpPassword = HelpClass.Encrypt(Request["PasswordInput"]);
-            
-            ///Connect to db
-            using(NewsterContext nc = new NewsterContext())
-            {
-                ///Find user
-                var tmpUserList = nc.Users.Where(x => x.UserName == tmpUsername);
+            string tmpUsername = Request["loginUsername"];
+            string tmpPassword = HelpClass.Encrypt(Request["loginPassword"]);
 
-                ///Check if there is a user and the password matches
-                if (tmpUserList.Count() == 1 && tmpUserList.First().Password == tmpPassword)
+            try
+            {
+                using (NewsterContext nc = new NewsterContext())
                 {
-                    ///Set session values
-                    Session["currentUserId"] = tmpUserList.First().UserId;
-                    Session["currentUsername"] = tmpUserList.First().UserName;
-                    Session["loginStatus"] = true;
+                    ///Find user
+                    var tmpUserList = nc.Users.Where(x => x.UserName == tmpUsername);
+
+                    ///Check if there is a user and the password matches
+                    if (tmpUserList.Count() == 1 && tmpUserList.First().Password == tmpPassword)
+                    {
+                        ///Set session values
+                        Session["currentUserId"] = tmpUserList.First().UserId;
+                        Session["currentUsername"] = tmpUserList.First().UserName;
+                        Session["loginStatus"] = true;
+                    }
                 }
             }
 
-            ///Return to index
+            catch
+            {
+                ///Return to login/register -view to try again
+                return RedirectToAction("/Default/Login");
+            }
+
             return RedirectToAction("/Default/Index");
         }
 
