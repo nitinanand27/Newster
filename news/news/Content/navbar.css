@@ -1,13 +1,14 @@
 ﻿.animate {
+    background-color: rgba(19, 35, 47, 0.9);
     -webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
+	/*-ms-transition: all 0.3s ease-in-out;*/
 	transition: all 0.3s ease-in-out;
 }
 
 .navbar-bootsnipp {
-    background-color: rgb(255, 255, 255);
+    background: rgba(19, 35, 47, 0.9);
 	border-color: rgb(95, 176, 228);
 	border-radius: 0px;
 	margin-bottom: 0px;
@@ -39,7 +40,7 @@
 
 .navbar-bootsnipp .navbar-nav > li > a {
 	border: 0px solid rgb(95, 176, 228);
-	color: rgb(120, 120, 120);
+	color: rgb(95, 176, 228);
 	padding: 15px 14px;
 }
 
@@ -52,6 +53,7 @@
 .navbar-bootsnipp .navbar-nav > li:not(.disabled).active > a,
 .navbar-bootsnipp .navbar-nav > li:not(.disabled) > a:hover, 
 .navbar-bootsnipp .navbar-nav > li:not(.disabled) > a:focus {
+    background-color: rgba(19, 35, 47, 0.9);
 	border-left-width: 5px;
 	color: rgb(95, 176, 228);
 	padding-left: 10px;
@@ -73,7 +75,7 @@
 }
 .navbar-bootsnipp .navbar-nav > li > .dropdown-menu > li > a {
 	border-left: 0px solid rgb(95, 176, 228);
-	color: rgb(120, 120, 120);
+	color: rgb(95, 176, 228);
 	font-size: 16px;
 	font-weight: 400;
 	padding: 10px 20px;
@@ -82,7 +84,7 @@
 .navbar-bootsnipp .navbar-nav > li > .dropdown-menu > li.active > a, 
 .navbar-bootsnipp .navbar-nav > li > .dropdown-menu > li > a:hover, 
 .navbar-bootsnipp .navbar-nav > li > .dropdown-menu > li > a:focus {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(19, 35, 47, 0.9);
 	border-left-width: 5px;
 	padding-left: 15px;
 }
@@ -109,7 +111,7 @@
 	display: none;
 }
 .navbar-bootsnipp .bootsnipp-search .form-control {
-	background-color: rgb(235, 235, 235);
+	background-color: rgb(95, 176, 228);
 	border-radius: 0px;
 	border-width: 0px;
 	font-size: 24px;
@@ -158,6 +160,7 @@
 	.navbar-bootsnipp .navbar-nav > li:not(.disabled).active > a,
 	.navbar-bootsnipp .navbar-nav > li:not(.disabled) > a:hover, 
 	.navbar-bootsnipp .navbar-nav > li:not(.disabled) > a:focus {
+        background-color: rgba(19, 35, 47, 0.9);
 		border-bottom-width: 5px;
 		border-left-width: 0px;
 		padding-bottom: 10px;
@@ -199,4 +202,8 @@
 	.navbar-bootsnipp .bootsnipp-search > .container {
 		padding: 0px;
 	}    
+}
+#hrid {
+    background: rgba(19, 35, 47, 0.9);
+    border-color: rgb(95, 176, 228);
 }
