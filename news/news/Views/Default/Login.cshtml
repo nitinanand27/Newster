@@ -9,66 +9,51 @@
         <li class="tab active"><a href="#signup">Register</a></li>
         <li class="tab"><a href="#login">Log In</a></li>
     </ul>
+    <center>
+        <div class="tab-content">
+            <div id="signup">
+                <h1>Sign Up Now</h1>
 
-    <div class="tab-content">
-        <div id="signup">
-            <h1>Sign Up Now</h1>
+                <form action="/User/RegisterUser" method="post">
 
-            <form action="/User/RegisterUser" method="post">
-
-                <div class="field-wrap">
                     <div class="field-wrap">
-                        <label>
-                            Username<span class="req">*</span>
-                        </label>
-                        <input type="text" name="registerUsername" required autocomplete="off" />
+                        <div class="field-wrap">
+                            <input type="text" name="registerUsername" required autocomplete="off" placeholder="username"/>
+                        </div>
+
+                    </div>
+                    <div class="field-wrap">
+                        <input type="email" name="registerEmail" required autocomplete="off" placeholder="email"/>
                     </div>
 
-                </div>
-                <div class="field-wrap">
-                    <label>
-                        Email Address<span class="req">*</span>
-                    </label>
-                    <input type="email" name="registerEmail" required autocomplete="off" />
-                </div>
+                    <div class="field-wrap">
+                        <input type="password" name="registerPassword" required autocomplete="off" placeholder="password"/>
+                    </div>
 
-                <div class="field-wrap">
-                    <label>
-                        Set A Password<span class="req">*</span>
-                    </label>
-                    <input type="password" name="registerPassword" required autocomplete="off" />
-                </div>
+                    <button type="submit" class="button button-block">Register</button>
 
-                <button type="submit" class="button button-block">Register</button>
+                </form>
 
-            </form>
+            </div>
 
-        </div>
+            <div id="login">
+                <h1>Welcome Back!</h1>
 
-        <div id="login">
-            <h1>Welcome Back!</h1>
+                <form action="/User/Login" method="post">
 
-            <form action="/User/Login" method="post">
+                    <div class="field-wrap">
+                        <input type="text" name="loginUsername" required autocomplete="off" placeholder="username"/>
+                    </div>
 
-                <div class="field-wrap">
-                    <label>
-                        Username<span class="req">*</span>
-                    </label>
-                    <input type="text" name ="loginUsername" required autocomplete="off" />
-                </div>
-
-                <div class="field-wrap">
-                    <label>
-                        Password<span class="req">*</span>
-                    </label>
-                    <input type="password" name="loginPassword" required autocomplete="off" />
-                </div>
+                    <div class="field-wrap">
+                        <input type="password" name="loginPassword" required autocomplete="off" placeholder="password"/>
+                    </div>
 
 
-                <button type="submit" class="button button-block">Go!</button>
+                    <button type="submit" class="button button-block">Go!</button>
 
-            </form>
-        </div>
-    </div><!-- tab-content -->
-
+                </form>
+            </div>
+        </div><!-- tab-content -->
+    </center>
 </div> <!-- /form -->
