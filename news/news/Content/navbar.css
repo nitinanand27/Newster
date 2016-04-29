@@ -5,6 +5,7 @@
 	-o-transition: all 0.3s ease-in-out;
 	/*-ms-transition: all 0.3s ease-in-out;*/
 	transition: all 0.3s ease-in-out;
+
 }
 
 .navbar-bootsnipp {
@@ -13,6 +14,8 @@
 	border-radius: 0px;
 	margin-bottom: 0px;
 	z-index: 100;
+    height: 80px;
+    
 }
 .navbar-bootsnipp:nth-of-type(2) {
 	border-top-width: 1px;
@@ -32,11 +35,11 @@
 	background-color: rgb(95, 176, 228);
 }
 
-.navbar-bootsnipp .navbar-brand {
+/*.navbar-bootsnipp .navbar-brand {
 	color: rgb(95, 176, 228);
 	font-weight: 900;
 	letter-spacing: 2px;
-}
+}*/
 
 .navbar-bootsnipp .navbar-nav > li > a {
 	border: 0px solid rgb(95, 176, 228);
@@ -67,6 +70,7 @@
 	margin-right: -1px;
 	min-width: 220px;
 	padding: 0px;
+    background-color: rgba(19, 35, 47, 1);
 }
 .navbar-bootsnipp .navbar-nav > li:not(.dropdown-right) > .dropdown-menu {
 	left: 0px;
@@ -207,3 +211,17 @@
     background: rgba(19, 35, 47, 0.9);
     border-color: rgb(95, 176, 228);
 }
+.navbar-nav.navbar-right:last-child {
+    margin-top: 18px;
+}
+#loggo {
+    margin-top: 18px;
+}
+b, strong {
+    font-weight: bold;
+    font-size:22px
+}
+.navbar-collapse {
+    background-color: rgba(19, 35, 47, 1);
+}
+

@@ -148,12 +148,14 @@ textarea {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-appearance: none;
+  width: 150px;
 }
 .button:hover, .button:focus {
   background: #179b77;
 }
-
+S
 .button-block {
   display: block;
   width: 100%;
 }
+
