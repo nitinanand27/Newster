@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<p style="color:red; font-size:14px">@TempData["headingError"]</p>
+<div class="form">
+    <form method="post" action="/Admin/AddArticle">
+        <input type="text" placeholder="Heading" name="heading" />
+        <input type="date" placeholder="Date" name="date" />
+        <input type="text" placeholder="Image URL" name="imageurl" />
+        <input type="text" placeholder="Video URL" name="videourl" />
+        <input type="text" placeholder="Source URL" name="sourceurl" />
+        <textarea placeholder="Description" name="content"></textarea>
+        <input type="submit" value="Save & Create" />
+    </form>
+</div>
+
+
+<div>
+    <a href="/Admin/Index">Back to List</a>
+</div>

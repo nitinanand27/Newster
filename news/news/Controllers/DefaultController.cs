@@ -28,7 +28,6 @@ namespace news.Controllers
                                  select x).First();
                 }
 
-
                 return View(list);
             }
         }
