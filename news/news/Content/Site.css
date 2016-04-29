@@ -71,6 +71,7 @@ body {
 }
 .picc {
 	width: 100%;
+    height: 450px;
 }
 #divtext{
 	font-family: 'Helvetica Neue', arial, sans-serif;
@@ -93,4 +94,8 @@ hr {
 .container-body {
     height: 90%;
     
+}
+#footertext {
+text-align: center;
+font-size: 18px;
 }
