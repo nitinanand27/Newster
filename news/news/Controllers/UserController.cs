@@ -17,32 +17,44 @@ namespace news.Controllers
             ///Get values from the form entered by the user in /Default/Login.cshtml
             string tmpUsername = Request["registerUsername"];
             string tmpEmail = Request["registerEmail"];
-            string tmpPassword = HelpClass.Encrypt("");
+            string tmpPassword = HelpClass.Encrypt(Request["registerPassword"]);
 
-            ///Check entries
+            if(!HelpClass.ValidateEmail(tmpEmail) && tmpUsername.Length > 1)
+            {
+                ///Return to login/register -view to try again
+                TempData["error"] = "To short username and/or invalid email!";
+                return Redirect("/Default/Login");
+            }
+
             try
             {
-                if (tmpUsername.Length > 2 && HelpClass.ValidateEmail(tmpEmail))
+                ///Connect to dB and create user
+                using (NewsterContext nc = new NewsterContext())
                 {
-                    ///Connect to dB and create user
-                    using (NewsterContext nc = new NewsterContext())
+                    ///Check for existing username
+                    if(nc.Users.Where(x=>x.UserName.ToLower() == tmpUsername.ToLower()).Count() == 0)
                     {
-
                         User tmpUser = new User() { UserName = tmpUsername, Email = tmpEmail, Password = tmpPassword };
                         nc.Users.Add(tmpUser);
                         nc.SaveChanges();
                     }
+
+                    else
+                    {
+                        TempData["error"] = "User exists!";
+                        return Redirect("/Default/Login");
+                    }
                 }
+
+                return Redirect("/Default/Index");
             }
 
             catch
             {
                 ///Return to login/register -view to try again
-                return RedirectToAction("/Default/Login");
+                TempData["error"] = "Database fail!";
+                return Redirect("/Default/Login");
             }
-
-            return RedirectToAction("/Default/Index");
-
         }
 
         [HttpPost]
@@ -54,10 +66,11 @@ namespace news.Controllers
 
             try
             {
+                ///Connect to dB to find user
                 using (NewsterContext nc = new NewsterContext())
                 {
                     ///Find user
-                    var tmpUserList = nc.Users.Where(x => x.UserName == tmpUsername);
+                    var tmpUserList = nc.Users.Where(x => x.UserName.ToLower() == tmpUsername.ToLower());
 
                     ///Check if there is a user and the password matches
                     if (tmpUserList.Count() == 1 && tmpUserList.First().Password == tmpPassword)
@@ -66,17 +79,24 @@ namespace news.Controllers
                         Session["currentUserId"] = tmpUserList.First().UserId;
                         Session["currentUsername"] = tmpUserList.First().UserName;
                         Session["loginStatus"] = true;
+
+                        return Redirect("/Default/Index");
                     }
+
+                    else
+                    {
+                        TempData["error"] = "Check username and/or password";
+                        return Redirect("/Default/Login");
+                    }          
                 }
             }
 
             catch
             {
                 ///Return to login/register -view to try again
-                return RedirectToAction("/Default/Login");
+                TempData["error"] = "Database fail!";
+                return Redirect("/Default/Login");
             }
-
-            return RedirectToAction("/Default/Index");
         }
 
         public ActionResult Logout()
