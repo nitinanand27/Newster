@@ -25,7 +25,7 @@
                     <span class="[ icon-bar ]"></span>
                 </button>
                 <div class="[ animbrand ]">
-                    <img src="~/Content/img/logo.png" class="img-responsive" alt="Newster" id="loggo">
+                    <a href="~/Default/Index"><img src="~/Content/img/logo.png" class="img-responsive" alt="Newster" id="loggo"></a>
                     @*<a class="[ navbar-brand ][ animate ]" href="/Default/Index">Newster</a>*@
                 </div>
             </div>
@@ -44,7 +44,16 @@
                             </div>
                         </form>
                     </li>
-                    <li><a class="animate" href="~/Default/Login">Register/Login</a></li>
+                    @if ((bool)Session["loginStatus"] == false)
+                    {
+                        <li><a class="animate" href="~/Default/Login">Register/Login</a></li>
+                    }
+                    @if ((bool)Session["loginStatus"] == true)
+                    {
+                        <li><a class="animate" href="~/Admin/Create">Create</a></li>
+                        <li><a class="animate" href="~/User/Logout">Logout</a></li>
+                    }
+
                     <li class="[ hidden-xs ]"><a href="#toggle-search" class="[ animate ]"><span class="[ glyphicon glyphicon-search ]"></span></a></li>
                 </ul>
             </div>

@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-@foreach (var item in Model)
+@foreach (var item in Model.OrderByDescending(x=>x.Date))
 {
         <div class="container-narrow">
             <div class="row rowfix">
