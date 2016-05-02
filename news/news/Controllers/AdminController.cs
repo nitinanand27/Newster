@@ -49,7 +49,7 @@ namespace news.Controllers
                 Article newArticle = new Article
                 {
                     Heading = heading,
-                    Author = 1,
+                    Author = (int)Session["currentUserId"],
                     Date = DateTime.Now,
                     ImgAdress = imageurl,
                     VideoAdress = videourl,

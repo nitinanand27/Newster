@@ -106,7 +106,7 @@ namespace news.Controllers
             Session["currentUsername"] = "";
             Session["loginStatus"] = false;
 
-            return RedirectToAction("/Default/Index");
+            return Redirect("/Default/Index");
         }
     }
 }
