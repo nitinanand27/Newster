@@ -14,7 +14,7 @@
 	border-radius: 0px;
 	margin-bottom: 0px;
 	z-index: 100;
-    height: 80px;
+    height: 140px;
     
 }
 .navbar-bootsnipp:nth-of-type(2) {
@@ -157,8 +157,10 @@
 		padding: 15px 5px;
 	}
 	.navbar-bootsnipp .navbar-nav > li > a {
-		font-size: 16px;
+		font-size: 28px;
 		letter-spacing: 1px;
+        margin-top: 30px;
+        font-family: Britannic;
 	}
 	.navbar-bootsnipp .navbar-nav > li:not(.disabled).open > a,
 	.navbar-bootsnipp .navbar-nav > li:not(.disabled).active > a,
@@ -216,6 +218,8 @@
 }
 #loggo {
     margin-top: 18px;
+
+    height: 100px;
 }
 b, strong {
     font-weight: bold;
@@ -224,4 +228,3 @@ b, strong {
 .navbar-collapse {
     background-color: rgba(19, 35, 47, 1);
 }
-

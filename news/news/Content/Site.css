@@ -9,6 +9,7 @@ html, body {
 }
 .header {
     height: 100px;
+    margin-top: 80px;
 
 }
 .wrap {
