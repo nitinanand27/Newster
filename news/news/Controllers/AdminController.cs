@@ -30,7 +30,7 @@ namespace news.Controllers
             ////DateTime date = DateTime.Parse(Request["date"]);
             //int author = context.Users.Where(u => u.UserName == Session["currentUser"].ToString()).First().UserId;
             string imageurl = Request["imageurl"];
-            string videourl = Request["videosurl"];
+            string videourl = Request["videourl"];
             string sourceurl = Request["sourceurl"];
             string text = Request["content"];
             //string categories = 
@@ -49,7 +49,7 @@ namespace news.Controllers
                 Article newArticle = new Article
                 {
                     Heading = heading,
-                    Author = 2,
+                    Author = 1,
                     Date = DateTime.Now,
                     ImgAdress = imageurl,
                     VideoAdress = videourl,
