@@ -23,7 +23,7 @@ namespace news.Controllers
                         return View(articleList);
                     }
 
-                    return View("Create");
+                    return View(context.Articles.ToList());
                 }
             }
 
