@@ -8,6 +8,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/navbar.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/login.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" type="text/css" />
 
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
@@ -50,7 +51,7 @@
                     }
                     @if ((bool)Session["loginStatus"] == true)
                     {
-                        <li><a class="animate" href="~/Admin/Create">Create</a></li>
+                        <li><a class="animate" href="~/Admin/Index">Dashboard</a></li>
                         <li><a class="animate" href="~/User/Logout">Logout</a></li>
                     }
 
