@@ -3,37 +3,37 @@
     ViewBag.Title = "Index";
 }
 
-@foreach (var item in Model.OrderByDescending(x=>x.Date))
+@foreach (var item in Model.OrderByDescending(x => x.Date))
 {
-        <div class="container-narrow">
-            <div class="row rowfix">
-                <div class="col-sm-12 divnews">
-                    <h2><strong>@item.Heading</strong></h2>
+    <div class="container-narrow">
+        <div class="row rowfix">
+            <div class="col-sm-12 divnews">
+                <h2><strong>@item.Heading</strong></h2>
 
 
-                    @if (!String.IsNullOrEmpty(item.VideoAdress))
-                    {
-                        <iframe scrolling="no" src="@item.VideoAdress" class="picc"></iframe>
+                @if (!String.IsNullOrEmpty(item.VideoAdress))
+                {
+                    <iframe scrolling="no" src="@item.VideoAdress" class="picc"></iframe>
 
-                    }
+                }
 
-                    else if (!String.IsNullOrEmpty(item.ImgAdress))
-                    {
+                else if (!String.IsNullOrEmpty(item.ImgAdress))
+                {
 
-                        <img src="@item.ImgAdress" class="picc">
+                    <img src="@item.ImgAdress" class="picc">
 
-                    }
+                }
 
-                    <div id="divtext">
-                        <p>@item.Text</p>
-                    </div>
-
-                    <hr>
-                    <p class="tagme"> By: @item.User.UserName @item.Date.ToShortDateString()</p>
-
+                <div id="divtext">
+                    <p>@item.Text</p>
                 </div>
+
+                <hr>
+                <p class="tagme"> By: @item.User.UserName @item.Date.ToShortDateString()</p>
+                <p class="tagme">@item.Category.Name</p>
             </div>
         </div>
-
+    </div>
 }
+
 
