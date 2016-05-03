@@ -43,19 +43,10 @@ namespace news.Controllers
             NewsterContext context = new NewsterContext();
 
             string heading = Request["heading"];
-            ////DateTime date = DateTime.Parse(Request["date"]);
-            //int author = context.Users.Where(u => u.UserName == Session["currentUser"].ToString()).First().UserId;
             string imageurl = Request["imageurl"];
             string videourl = Request["videourl"];
             string sourceurl = Request["sourceurl"];
             string text = Request["content"];
-            //string categories = 
-
-            //int authorID = Convert.ToInt16(Session["currentUserId"]);
-
-            //var authorObject = context.Users.Where(u => u.UserId == authorID).FirstOrDefault();
-
-            //int author = Convert.ToInt16(authorObject);
 
             var existingHeadings = context.Articles.Where(h => h.Heading == heading);
 
@@ -85,6 +76,5 @@ namespace news.Controllers
                 return Redirect("/Admin/Create");
             }
         }
-
     }
 }
