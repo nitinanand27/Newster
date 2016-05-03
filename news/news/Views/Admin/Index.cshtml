@@ -1,84 +1,51 @@
 ﻿@model IEnumerable<news.Models.Article>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Dashboard";
 }
 
-<h2>Index</h2>
+<h2>Dashboard</h2>
 
-<p>
-    <a href="/Admin/Create">Create New Article</a>
-</p>
-<table class="table" id="hej">
-    <tr>
-        <th>
-            S.No
-        </th>
-        <th>
-            Heading
-        </th>
-        <th>
-            Author
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Image URL
-        </th>
-        <th>
-            Video URL
-        </th>
-        <th>
-            Source URL
-        </th>
+<div class="container">
 
-    </tr>
+    <div class="row">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @item.ArticleId
-            </td>
-            <td>
-                @item.Heading
-            </td>
-            <td>
-                @item.User.UserName
-            </td>
-            <td>
-                @item.Date.ToShortDateString()
-            </td>
-            <td>
-                @item.Text
-            </td>
-            <td>
-                @item.ImgAdress
-            </td>
-            <td>
-                @item.VideoAdress
-            </td>
-            <td>
-                @item.SourceAdress
-            </td>
+        @*List of articles by user*@
+        <div class="col-xs-12 col-md-6">
+            <h2>Articles</h2>
+            @foreach (var item in Model)
+            {
+                <div class="dashboard-article">
+                    <h4>@item.Heading</h4>
+                    <form method="post" action="/Admin/Delete">
+                        <input type="hidden" value="@item.ArticleId"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            }
+        </div>
 
-            <td>
-                <form method="post" action="/Admin/Edit/@item.ArticleId">
-                    <input type="hidden" value="@item.ArticleId" name="name" />
-                    <input type="submit" value="Edit" />
-                </form>
-
-                <form method="post" action="/Admin/Delete/@item.ArticleId">
-                    <input type="hidden" value="@item.ArticleId" name="name" />
-                    <input type="submit" value="Delete" />
-                </form>
-            </td>
-        </tr>
-    }
-</table>
+        @*Form for adding article*@
+        <div class="col-xs-12 col-md-6">
+            <h2>Create</h2>
+            <form method="post" action="/Admin/AddArticle">
+                <input type="text" placeholder="Heading" name="heading" />
+                <input type="text" placeholder="Image URL" name="imageurl" />
+                <input type="text" placeholder="Video URL" name="videourl" />
+                <input type="text" placeholder="Source URL" name="sourceurl" />
+                <select name="categories">
+                    <option value="Sports">Sports</option>
+                    <option value="Politics">Politics</option>
+                    <option value="War">War</option>
+                    <option value="Money">Money</option>
+                    <option value="Others">Audi</option>
+                </select>
+                <textarea placeholder="Description" name="content"></textarea>
+                <input type="submit" value="Save & Create" />
+            </form>
+        </div>
+    </div>
+</div>
 
 <p>
     <a href="/Default/Index">Back to Articles</a>

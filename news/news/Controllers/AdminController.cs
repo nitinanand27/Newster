@@ -12,9 +12,25 @@ namespace news.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            NewsterContext context = new NewsterContext();
-            var articleList = context.Articles.ToList();
-            return View(articleList);
+            try
+            {
+                using(NewsterContext context = new NewsterContext())
+                {
+
+                    if(Session["currentUserName"].ToString() != "admin")
+                    {
+                        var articleList = context.Articles.Where(x => x.User.UserName == Session["currentUserName"].ToString());
+                        return View(articleList);
+                    }
+
+                    return View(context.Articles.ToList());
+                }
+            }
+
+            catch
+            {
+                return Redirect("/Default/Index");
+            }
         }
 
         public ActionResult Create()

@@ -23,6 +23,7 @@ namespace news.Controllers
 
                 foreach (var item in list)
                 {
+
                     item.User = (from x in context.Users
                                  where x.UserId == item.Author
                                  select x).First();
