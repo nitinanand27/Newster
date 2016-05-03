@@ -65,6 +65,7 @@ namespace news.Controllers
                     Text = text,               
                     Category = cat
                 };
+
                 cat.Articles.Add(newArticle);
 
                 context.Articles.Add(newArticle);
@@ -76,6 +77,20 @@ namespace news.Controllers
             {
                 TempData["headingError"] = "Heading already exists";
                 return Redirect("/Admin/Create");
+            }
+        }
+
+        public ActionResult Delete()
+        {
+            using(NewsterContext nc = new NewsterContext())
+            {
+                int idToDelete = int.Parse(Request["articleIdDelete"]);
+
+                Article tmpArticle = nc.Articles.Where(x => x.ArticleId == idToDelete).First();
+                nc.Articles.Remove(tmpArticle);
+                nc.SaveChanges();
+
+                return RedirectToAction("Index");
             }
         }
     }
