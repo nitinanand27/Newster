@@ -17,19 +17,29 @@ namespace news.Controllers
 
         public ActionResult Index()
         {
+
             using (NewsterContext context = new NewsterContext())
             {
-                var list = context.Articles.ToList();
 
-                foreach (var item in list)
+                if (context.Articles.Count() > 0)
                 {
+                    var list = context.Articles.ToList();
 
-                    item.User = (from x in context.Users
-                                 where x.UserId == item.Author
-                                 select x).First();
+                    foreach (var item in list)
+                    {
+
+                        item.User = (from x in context.Users
+                                     where x.UserName == item.User.UserName
+                                     select x).First();
+
+                        item.Category = (from x in context.Categories
+                                        where x.Name == item.Category.Name
+                                        select x).First();
+                    }
+
+                    return View(list);
                 }
-
-                return View(list);
+                return View("Empty");
             }
         }
  
@@ -42,23 +52,23 @@ namespace news.Controllers
 
             var articleList = context.Articles.ToList();
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                var searchResult = articleList.Where(n => (n.Heading.ToLower().Contains(searchString.ToLower())) ||
-                (n.Text.ToLower().Contains(searchString.ToLower())) || (n.Categories.Where(y => y.Name.ToLower().Contains(searchString.ToLower())).Count() > 0) || (n.User.UserName.ToLower().Contains(searchString.ToLower())));
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    var searchResult = articleList.Where(n => (n.Heading.ToLower().Contains(searchString.ToLower())) ||
+            //    (n.Text.ToLower().Contains(searchString.ToLower())) || (n.Categories.Where(y => y.Name.ToLower().Contains(searchString.ToLower())).Count() > 0) || (n.User.UserName.ToLower().Contains(searchString.ToLower())));
 
-                foreach (var item in searchResult)
-                {
-                    item.User = (from x in context.Users
-                                 where x.UserId == item.Author
-                                 select x).First();
-                }
+            //    foreach (var item in searchResult)
+            //    {
+            //        item.User = (from x in context.Users
+            //                     where x.UserId == item.Author
+            //                     select x).First();
+            //    }
                 
-                if (searchResult.Count()!=0)
-                {
-                    return View("Index", searchResult);
-                }
-            }
+            //    if (searchResult.Count()!=0)
+            //    {
+            //        return View("Index", searchResult);
+            //    }
+            //}
 
             return RedirectToAction("Index");            
 

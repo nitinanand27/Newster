@@ -135,12 +135,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\HelpClass.cs" />
-    <Compile Include="Migrations\201604260648295_init.cs" />
-    <Compile Include="Migrations\201604260648295_init.Designer.cs">
-      <DependentUpon>201604260648295_init.cs</DependentUpon>
+    <Compile Include="Migrations\201605031121137_init.cs" />
+    <Compile Include="Migrations\201605031121137_init.Designer.cs">
+      <DependentUpon>201605031121137_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605031138470_changed article.cs" />
+    <Compile Include="Migrations\201605031138470_changed article.Designer.cs">
+      <DependentUpon>201605031138470_changed article.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\HelpClass.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\NewsContext.cs" />
@@ -163,6 +168,7 @@
     <Content Include="Views\Default\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Default\Empty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -177,8 +183,11 @@
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604260648295_init.resx">
-      <DependentUpon>201604260648295_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605031121137_init.resx">
+      <DependentUpon>201605031121137_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031138470_changed article.resx">
+      <DependentUpon>201605031138470_changed article.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

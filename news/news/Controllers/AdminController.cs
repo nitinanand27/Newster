@@ -23,7 +23,7 @@ namespace news.Controllers
                         return View(articleList);
                     }
 
-                    return View(context.Articles.ToList());
+                    return View("Create");
                 }
             }
 
@@ -31,11 +31,6 @@ namespace news.Controllers
             {
                 return Redirect("/Default/Index");
             }
-        }
-
-        public ActionResult Create()
-        {
-            return View();
         }
 
         public ActionResult AddArticle()
@@ -47,23 +42,30 @@ namespace news.Controllers
             string videourl = Request["videourl"];
             string sourceurl = Request["sourceurl"];
             string text = Request["content"];
+            string category = Request["categories"];
+
+            string userName = (string)Session["currentUserName"];
 
             var existingHeadings = context.Articles.Where(h => h.Heading == heading);
 
             //Controls adding new article with same heading
             if (existingHeadings.Count() == 0)
             {
+                Category cat = context.Categories.Where(x => x.Name == category).First();
+                User tmpUser = context.Users.Where(x => x.UserName == userName).First();
+
                 Article newArticle = new Article
                 {
                     Heading = heading,
-                    Author = (int)Session["currentUserId"],
+                    User = tmpUser,
                     Date = DateTime.Now,
                     ImgAdress = imageurl,
                     VideoAdress = videourl,
                     SourceAdress = sourceurl,
-                    Text = text,
-                    //Categories = new Category { Name = Request["category"]};
+                    Text = text,               
+                    Category = cat
                 };
+                cat.Articles.Add(newArticle);
 
                 context.Articles.Add(newArticle);
                 context.SaveChanges();
