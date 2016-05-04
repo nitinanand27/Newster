@@ -2,10 +2,12 @@
 }
 
 .dashboard-article{
-    border:solid 1px white;
-    border-radius:3px;
-    background-color:black;
-    color:white;
-    margin-bottom:10px;
-    padding:5px;
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  font-family: 'Titillium Web', sans-serif;
+  margin-right: 1px;
 }

@@ -2,21 +2,34 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-<p style="color:red; font-size:14px">@TempData["headingError"]</p>
-<div class="form">
-    <form method="post" action="/Admin/AddArticle">
-        <input type="text" placeholder="Heading" name="heading" />
-        <input type="text" placeholder="Image URL" name="imageurl" />
-        <input type="text" placeholder="Video URL" name="videourl" />
-        <input type="text" placeholder="Source URL" name="sourceurl" />
-        <select name="categories">
-            <option value="Sports">Sports</option>
-        </select>
-        <textarea placeholder="Description" name="content"></textarea>
-        <input type="submit" value="Save & Create" />
-    </form>
-</div>
+<center>
+    <div class="form">
+        <form method="post" action="/Admin/AddArticle">
+            <h2 id="createh2">News</h2>
+            <div class="field-wrap">
+                <input type="text" name="heading" placeholder="Heading" />
+            </div>
+            <div class="field-wrap">
+                <input type="text" name="imageurl" placeholder="Image URL" />
+            </div>
+            <div class="field-wrap">
+                <input type="text" name="videourl" placeholder="Video URL" />
+            </div>
+            <div class="field-wrap">
+                <input type="text" name="sourceurl" placeholder="Source URL" />
+            </div>
+            <div class="field-wrap">
+                <textarea placeholder="Description" name="content"></textarea>
+                <p style="color: white">Categories</p><select name="categories">
+                    <option value="Sports">Sports</option>
+                </select>
+            </div>
+            <button type="submit" class="button button-block">Create</button>
+
+
+        </form>
+    </div>
+</center>
 
 
 @*<div>
