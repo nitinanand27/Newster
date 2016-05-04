@@ -9,7 +9,10 @@ namespace news.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
+        /// <summary>
+        /// Present the dashboard view with a list of all the articles
+        /// the current user has rights to edit and delete.
+        /// </summary>
         public ActionResult Index()
         {
             try
@@ -17,12 +20,26 @@ namespace news.Controllers
                 using(NewsterContext context = new NewsterContext())
                 {
 
-                    if(Session["currentUserName"].ToString() != "admin")
+                    string tmpUser = Session["currentUserName"].ToString();
+
+                    if (tmpUser != "admin")
                     {
-                        var articleList = context.Articles.Where(x => x.User.UserName == Session["currentUserName"].ToString());
-                        return View(articleList);
+
+                        ///Get all the articles created by the specific user
+                        var articleList = context.Articles.Where(x => x.User.UserName == tmpUser).ToList();
+
+                        if (articleList.Count() > 0)
+                        {
+
+                            return View(articleList);
+                        }
+
+                        ///If the user has no articles it gets sent to a page to add its
+                        /// first article
+                        return RedirectToAction("Create");
                     }
 
+                    ///Admin can see all articles in the dB
                     return View(context.Articles.ToList());
                 }
             }
@@ -31,6 +48,11 @@ namespace news.Controllers
             {
                 return Redirect("/Default/Index");
             }
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
 
         public ActionResult AddArticle()
@@ -64,6 +86,7 @@ namespace news.Controllers
                     Text = text,               
                     Category = cat
                 };
+
                 cat.Articles.Add(newArticle);
 
                 context.Articles.Add(newArticle);
@@ -75,6 +98,20 @@ namespace news.Controllers
             {
                 TempData["headingError"] = "Heading already exists";
                 return Redirect("/Admin/Create");
+            }
+        }
+
+        public ActionResult Delete()
+        {
+            using(NewsterContext nc = new NewsterContext())
+            {
+                int idToDelete = int.Parse(Request["articleIdDelete"]);
+
+                Article tmpArticle = nc.Articles.Where(x => x.ArticleId == idToDelete).First();
+                nc.Articles.Remove(tmpArticle);
+                nc.SaveChanges();
+
+                return RedirectToAction("Index");
             }
         }
     }
