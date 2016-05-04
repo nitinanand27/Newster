@@ -1,4 +1,5 @@
-﻿using System;
+﻿using news.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,8 +17,26 @@ namespace news.Controllers
 
         public ActionResult AddComment()
         {
-            
-            return View();
+            NewsterContext context = new NewsterContext();
+            string comment = Request["comment"];
+            int articleId = Convert.ToInt16(Request["articleCommented"]);
+            int currentUserId = (int)Session["currentUserId"];
+            var user = context.Users.Where(u => u.UserId == currentUserId).First();
+            Article article = context.Articles.Where(a => a.ArticleId == articleId).FirstOrDefault();
+
+
+            Comment newComment = new Comment
+            {
+                Date = DateTime.Now,
+                ArticleId = articleId,
+                User = user,
+                Text = comment
+            };
+
+            context.Comments.Add(newComment);
+            context.SaveChanges();
+
+            return Redirect("/Default/Index");
         }
     }
 }

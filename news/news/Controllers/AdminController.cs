@@ -43,7 +43,6 @@ namespace news.Controllers
             string sourceurl = Request["sourceurl"];
             string text = Request["content"];
             string category = Request["categories"];
-
             string userName = (string)Session["currentUserName"];
 
             var existingHeadings = context.Articles.Where(h => h.Heading == heading);

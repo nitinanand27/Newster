@@ -23,19 +23,36 @@ namespace news.Controllers
 
                 if (context.Articles.Count() > 0)
                 {
-                    var list = context.Articles.ToList();
 
-                    foreach (var item in list)
-                    {
+                    //context.Articles.Include("Comments");
+                    //context.Articles.Include("User");
+                    //context.Articles.Include("Categories");
+                    var commentList = context.Comments.Include("User").ToList();
+                    var list = context.Articles.Include("User").Include("Category").Include("Comments").ToList();
 
-                        item.User = (from x in context.Users
-                                     where x.UserName == item.User.UserName
-                                     select x).First();
+                    //foreach (Article x in list)
+                    //{
+                    //    foreach (Comment y in commentList)
+                    //    {
+                    //        if (y.Article == x)
+                    //        {
+                    //            x.Comments.Add(y);
+                    //        }
+                    //    }
+                    //}
 
-                        item.Category = (from x in context.Categories
-                                        where x.Name == item.Category.Name
-                                        select x).First();
-                    }
+                    //foreach (var item in list)
+                    //{
+
+                    //    item.User = (from x in context.Users
+                    //                 where x.UserName == item.User.UserName
+                    //                 select x).First();
+
+                    //    item.Category = (from x in context.Categories
+                    //                     where x.Name == item.Category.Name
+                    //                     select x).First();
+                    //}
+
 
                     return View(list);
                 }
