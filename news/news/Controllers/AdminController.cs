@@ -20,6 +20,8 @@ namespace news.Controllers
                 using(NewsterContext context = new NewsterContext())
                 {
 
+                    ViewBag.Categories = context.Categories.ToList();
+
                     string tmpUser = Session["currentUserName"].ToString();
 
                     if (tmpUser != "admin")
@@ -52,6 +54,10 @@ namespace news.Controllers
 
         public ActionResult Create()
         {
+            using (NewsterContext nc = new NewsterContext())
+            {
+                ViewBag.Categories = nc.Categories.ToList();
+            }
             return View();
         }
 

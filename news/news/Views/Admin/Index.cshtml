@@ -29,7 +29,10 @@
                     <div class="field-wrap">
                         <textarea placeholder="Description" name="content"></textarea>
                         <p style="color: white">Categories</p><select name="categories">
-                            <option value="Sports">Sports</option>
+                            @foreach (news.Models.Category x in ViewBag.Categories)
+                            {
+                                <option value="@x.Name">@x.Name</option>
+                            }
                         </select>
                     </div>
                     <button type="submit" class="button button-block">Create</button>
