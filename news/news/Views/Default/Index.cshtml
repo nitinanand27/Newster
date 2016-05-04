@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<news.Models.Article>
 @{
     ViewBag.Title = "Index";
+    bool loggedIn = (bool)Session["loginStatus"];
 }
 
 @foreach (var item in Model.OrderByDescending(x => x.Date))
@@ -29,9 +30,30 @@
                 </div>
 
                 <hr>
+                <p><a href="@item.SourceAdress">Read More</a></p>
                 <p class="tagme"> By: @item.User.UserName @item.Date.ToShortDateString()</p>
                 <p class="tagme">@item.Category.Name</p>
-            </div>
+                
+
+                @if (loggedIn)
+                {
+                    <div>
+                   @foreach (var comment in item.Comments)
+                   {
+                       <p>@comment.Text</p>
+                       <p>@comment.Date, @comment.User.UserName</p>
+                   }
+
+                </div>
+                <form method="post" action="/Comment/AddComment">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="write comment" name="comment"></textarea>                    
+                        <input type="hidden" value="@item.ArticleId" name="articleCommented" />
+                        <input class="form-control" type="submit" value="Send Comment" />
+                    </div>
+                </form>
+                }
+              </div> 
         </div>
     </div>
 }
