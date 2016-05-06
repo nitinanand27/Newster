@@ -41,23 +41,29 @@ namespace news.Controllers
 
             var articleList = context.Articles.ToList();
 
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    var searchResult = articleList.Where(n => (n.Heading.ToLower().Contains(searchString.ToLower())) ||
-            //    (n.Text.ToLower().Contains(searchString.ToLower())) || (n.Categories.Where(y => y.Name.ToLower().Contains(searchString.ToLower())).Count() > 0) || (n.User.UserName.ToLower().Contains(searchString.ToLower())));
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //checks if search text matches article heading, description or author name irrespective of case
+                var searchResult = articleList.Where(n => (n.Heading.ToLower().Contains(searchString.ToLower())) ||
+                (n.Text.ToLower().Contains(searchString.ToLower())) || (n.Category.Name.ToLower().Contains(searchString.ToLower()))
+                || (n.User.UserName.ToLower().Contains(searchString.ToLower()))).ToList();
 
-            //    foreach (var item in searchResult)
-            //    {
-            //        item.User = (from x in context.Users
-            //                     where x.UserId == item.Author
-            //                     select x).First();
-            //    }
+                //if match result is positive
+                if (searchResult.Count() != 0)
+                {
+                    //returns a view with search result
+                    return View("Index", searchResult);
+                }
+
+                //foreach (var item in searchResult)
+                //{
+                //    item.User = (from x in context.Users
+                //                 where x.UserId == item.User.UserId
+                //                 select x).First();
+                //}
+
                 
-            //    if (searchResult.Count()!=0)
-            //    {
-            //        return View("Index", searchResult);
-            //    }
-            //}
+            }
 
             return RedirectToAction("Index");            
 
