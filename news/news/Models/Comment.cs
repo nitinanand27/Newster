@@ -13,8 +13,6 @@ namespace news.Models
 
         public DateTime Date { get; set; }
 
-        public int Author { get; set; }
-
         public int ArticleId { get; set; }
 
         public string Text { get; set; }
