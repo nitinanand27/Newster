@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201605071903315_changed comment.Designer.cs">
       <DependentUpon>201605071903315_changed comment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605071940371_added seed.cs" />
+    <Compile Include="Migrations\201605071940371_added seed.Designer.cs">
+      <DependentUpon>201605071940371_added seed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\HelpClass.cs" />
@@ -197,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605071903315_changed comment.resx">
       <DependentUpon>201605071903315_changed comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605071940371_added seed.resx">
+      <DependentUpon>201605071940371_added seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -4,6 +4,7 @@ namespace news.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using news.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<news.Models.NewsterContext>
     {
@@ -26,6 +27,17 @@ namespace news.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            if (context.Categories.Count() == 0)
+            {
+
+                context.Categories.Add(new Category { Name = "sports" });
+                context.Categories.Add(new Category { Name = "catpix" });
+                context.Categories.Add(new Category { Name = "breakingnews" });
+                context.Categories.Add(new Category { Name = "random" });
+                context.Categories.Add(new Category { Name = "funny" });
+
+                context.SaveChanges();
+            }
         }
     }
 }
