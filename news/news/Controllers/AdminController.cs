@@ -30,15 +30,8 @@ namespace news.Controllers
                         ///Get all the articles created by the specific user
                         var articleList = context.Articles.Where(x => x.User.UserName == tmpUser).ToList();
 
-                        if (articleList.Count() > 0)
-                        {
+                        return View(articleList);
 
-                            return View(articleList);
-                        }
-
-                        ///If the user has no articles it gets sent to a page to add its
-                        /// first article
-                        return RedirectToAction("Create");
                     }
 
                     ///Admin can see all articles in the dB
