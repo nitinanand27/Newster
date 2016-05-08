@@ -95,8 +95,8 @@ namespace news.Controllers
 
             else
             {
-                TempData["headingError"] = "Heading already exists";
-                return Redirect("/Admin/Create");
+                TempData["createError"] = "Heading already exists";
+                return Redirect("/Admin/Index");
             }
         }
 
