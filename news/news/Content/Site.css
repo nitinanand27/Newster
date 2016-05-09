@@ -107,4 +107,26 @@ font-size: 18px;
 #createh2 {
     color: white;
 }
+#source {
+    color: rgb(95, 176, 228);
+    padding: 15px;
+    text-align: left;
+    display: inline;
 
+}
+#category {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: right;
+    display: inline;
+    color: #888;
+}
+#usertag {
+    color: #888;
+}
+.comments {
+    padding: 0 0 0 15px;
+    text-align: center;
+}
+#hrhr {
+    margin: 10px;
+}
