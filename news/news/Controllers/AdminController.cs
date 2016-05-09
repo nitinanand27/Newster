@@ -30,15 +30,8 @@ namespace news.Controllers
                         ///Get all the articles created by the specific user
                         var articleList = context.Articles.Where(x => x.User.UserName == tmpUser).ToList();
 
-                        if (articleList.Count() > 0)
-                        {
+                        return View(articleList);
 
-                            return View(articleList);
-                        }
-
-                        ///If the user has no articles it gets sent to a page to add its
-                        /// first article
-                        return RedirectToAction("Create");
                     }
 
                     ///Admin can see all articles in the dB
@@ -73,14 +66,12 @@ namespace news.Controllers
             string category = Request["categories"];
             string userName = (string)Session["currentUserName"];
 
-            var existingHeadings = context.Articles.Where(h => h.Heading == heading);
+            Category cat = context.Categories.Where(x => x.Name == category).First();
+            User tmpUser = context.Users.Where(x => x.UserName == userName).First();
 
-            //Controls adding new article with same heading
-            if (existingHeadings.Count() == 0)
+            ///Heading, source and text is mandatory. Text max 140 characters.
+            if(heading.Length>0 && text.Length>0 && sourceurl.Length > 0 && text.Length<=140)
             {
-                Category cat = context.Categories.Where(x => x.Name == category).First();
-                User tmpUser = context.Users.Where(x => x.UserName == userName).First();
-
                 Article newArticle = new Article
                 {
                     Heading = heading,
@@ -89,11 +80,9 @@ namespace news.Controllers
                     ImgAdress = imageurl,
                     VideoAdress = videourl,
                     SourceAdress = sourceurl,
-                    Text = text,               
+                    Text = text,
                     Category = cat
                 };
-
-                cat.Articles.Add(newArticle);
 
                 context.Articles.Add(newArticle);
                 context.SaveChanges();
@@ -102,8 +91,8 @@ namespace news.Controllers
 
             else
             {
-                TempData["headingError"] = "Heading already exists";
-                return Redirect("/Admin/Create");
+                TempData["createError"] = "Heading, text and source is mandatory! Text can't be longer than 140 characters!";
+                return RedirectToAction("Index");
             }
         }
 

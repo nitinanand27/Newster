@@ -132,7 +132,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +143,14 @@
     <Compile Include="Migrations\201605031138470_changed article.cs" />
     <Compile Include="Migrations\201605031138470_changed article.Designer.cs">
       <DependentUpon>201605031138470_changed article.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605071903315_changed comment.cs" />
+    <Compile Include="Migrations\201605071903315_changed comment.Designer.cs">
+      <DependentUpon>201605071903315_changed comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605071940371_added seed.cs" />
+    <Compile Include="Migrations\201605071940371_added seed.Designer.cs">
+      <DependentUpon>201605071940371_added seed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -169,7 +176,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Default\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Default\Empty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -191,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605031138470_changed article.resx">
       <DependentUpon>201605031138470_changed article.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605071903315_changed comment.resx">
+      <DependentUpon>201605071903315_changed comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605071940371_added seed.resx">
+      <DependentUpon>201605071940371_added seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

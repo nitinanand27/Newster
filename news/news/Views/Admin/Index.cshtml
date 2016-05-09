@@ -2,8 +2,8 @@
 
 @{
     ViewBag.Title = "Dashboard";
+    var errorMessage = TempData["createError"];
 }
-
 
 <div class="container">
 
@@ -11,6 +11,7 @@
 
         @*Form for adding article*@
         <div class="col-xs-12 col-md-12 form">
+            <p style="color:red">@errorMessage</p>
             <center>
                 <form method="post" action="/Admin/AddArticle">
                     <h2 id="createh2">News</h2>
@@ -44,18 +45,23 @@
         @*List of articles by user*@
         <div class="col-xs-12 col-md-12 form">
             <center>
-                <h2 id="createh2">Delete news</h2>
+                <h2 id="createh2">Delete articles</h2>
                 <hr />
-                @foreach (var item in Model)
-                 {
-                    <div>
-                        <h4 id="createh2">@item.Heading</h4>
-                        <form method="post" action="/Admin/Delete">
-                            <input name="articleIdDelete" type="hidden" value="@item.ArticleId" />
-                            <button type="submit" class="btn btn-success">Delete</button>
-                        </form>
-                    </div>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div>
+                            <h4 id="createh2">@item.Heading</h4>
+                            <form method="post" action="/Admin/Delete">
+                                <input name="articleIdDelete" type="hidden" value="@item.ArticleId" />
+                                <button type="submit" class="btn btn-success">Delete</button>
+                            </form>
+                        </div>
+                    }
                 }
+                else { <p style="color:red">There is no articles published yet that you have the rights to alter.</p>}
+
             </center>
         </div>
     </div>
