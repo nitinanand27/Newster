@@ -6,9 +6,9 @@ namespace news.Models
 {
     public class Category
     {
-
+        [Key]
         public int CategoryId { get; set; }
-
+        [Required]
         public string Name { get; set; }
 
         public virtual IList<Article> Articles { get; set; }

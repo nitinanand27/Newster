@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Dashboard";
     var errorMessage = TempData["createError"];
+    string user = Session["currentUserName"].ToString();
+    List<news.Models.User> userList = ViewBag.ListOfNewUsers;
 }
 
 <div class="container">
@@ -64,6 +66,33 @@
 
             </center>
         </div>
+        @if (user == "admin")
+        {
+            <div class="col-xs-12 col-md-12 form">
+                <center>
+                    <h2>Approve users</h2>
+                    <hr />
+                    @if (userList.Count() > 0)
+                    {
+                        foreach (var u in userList)
+                        {
+                            <div>
+                                <h4>@u.UserName</h4>
+                                <form method="post" action="/Admin/Approve">
+                                    <input name="approveId" type="hidden" value="@u.UserId" />
+                                    <button type="submit" class="btn btn-success">Approve</button>
+                                </form>
+                            </div>
+                        }
+                    }
+
+                    else
+                    { <p style="color:red">No new members to approve</p> }
+
+                </center>
+            </div>
+        }
+       
     </div>
 </div>
 

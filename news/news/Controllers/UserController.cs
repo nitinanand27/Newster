@@ -34,7 +34,7 @@ namespace news.Controllers
                     ///Check for existing username
                     if(nc.Users.Where(x=>x.UserName.ToLower() == tmpUsername.ToLower()).Count() == 0)
                     {
-                        User tmpUser = new User() { UserName = tmpUsername, Email = tmpEmail, Password = tmpPassword };
+                        User tmpUser = new User() { UserName = tmpUsername, Email = tmpEmail, Password = tmpPassword,Confirmed=false };
                         nc.Users.Add(tmpUser);
                         nc.SaveChanges();
                     }

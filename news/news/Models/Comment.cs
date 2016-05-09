@@ -14,7 +14,7 @@ namespace news.Models
         public DateTime Date { get; set; }
 
         public int ArticleId { get; set; }
-
+        [Required]
         public string Text { get; set; }
 
         public virtual User User { get; set; }
