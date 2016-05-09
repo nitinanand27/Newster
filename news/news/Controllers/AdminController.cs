@@ -84,6 +84,9 @@ namespace news.Controllers
                     Category = cat
                 };
 
+                tmpUser.Articles.Add(newArticle);
+                cat.Articles.Add(newArticle);
+
                 context.Articles.Add(newArticle);
                 context.SaveChanges();
                 return Redirect("/Default/Index");
