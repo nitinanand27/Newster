@@ -28,6 +28,7 @@ namespace news.Controllers
 
                     return View(list);
                 }
+
                 return View("Empty");
             }
         }
@@ -53,16 +54,7 @@ namespace news.Controllers
                 {
                     //returns a view with search result
                     return View("Index", searchResult);
-                }
-
-                //foreach (var item in searchResult)
-                //{
-                //    item.User = (from x in context.Users
-                //                 where x.UserId == item.User.UserId
-                //                 select x).First();
-                //}
-
-                
+                }                
             }
 
             return RedirectToAction("Index");            
