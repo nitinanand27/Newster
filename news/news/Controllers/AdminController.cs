@@ -24,18 +24,31 @@ namespace news.Controllers
 
                     string tmpUser = Session["currentUserName"].ToString();
 
-                    if (tmpUser != "admin")
+                    if(tmpUser == "admin")
+                    {
+
+                        ///Create list of unauthorised users for admin to see
+                        ViewBag.ListOfNewUsers = context.Users.Where(x => x.Confirmed == false).ToList();
+
+                        ///Admin can see all articles in the dB
+                        return View(context.Articles.ToList());
+                    }
+
+                    ///Check for confirmed user
+                    else if (context.Users.Where(x=>x.UserName == tmpUser).First().Confirmed == true)
                     {
 
                         ///Get all the articles created by the specific user
                         var articleList = context.Articles.Where(x => x.User.UserName == tmpUser).ToList();
 
                         return View(articleList);
-
                     }
 
-                    ///Admin can see all articles in the dB
-                    return View(context.Articles.ToList());
+                    ///Show "not approved"-view
+                    else
+                    {
+                        return View("NotApproved");
+                    }
                 }
             }
 
@@ -111,6 +124,19 @@ namespace news.Controllers
 
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult Approve()
+        {
+            int idToApprove = int.Parse(Request["approveId"]);
+
+            using(NewsterContext nc = new NewsterContext())
+            {
+                nc.Users.Where(x => x.UserId == idToApprove).First().Confirmed = true;
+                nc.SaveChanges();
+            }
+
+            return RedirectToAction("index");
         }
     }
 }
