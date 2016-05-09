@@ -5,14 +5,13 @@
     var errorMessage = TempData["createError"];
 }
 
-
 <div class="container">
 
     <div class="row">
 
         @*Form for adding article*@
         <div class="col-xs-12 col-md-12 form">
-            <p>@errorMessage</p>
+            <p style="color:red">@errorMessage</p>
             <center>
                 <form method="post" action="/Admin/AddArticle">
                     <h2 id="createh2">News</h2>
