@@ -11,7 +11,8 @@ namespace news.Controllers
     {
         /// <summary>
         /// Present the dashboard view with a list of all the articles
-        /// the current user has rights to edit and delete.
+        /// the current user has rights to edit and delete. For admin there
+        /// is also a option to approve new users
         /// </summary>
         public ActionResult Index()
         {
@@ -58,15 +59,10 @@ namespace news.Controllers
             }
         }
 
-        public ActionResult Create()
-        {
-            using (NewsterContext nc = new NewsterContext())
-            {
-                ViewBag.Categories = nc.Categories.ToList();
-            }
-            return View();
-        }
-
+        /// <summary>
+        /// Create new article
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AddArticle()
         {
             NewsterContext context = new NewsterContext();
@@ -112,10 +108,15 @@ namespace news.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete article
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Delete()
         {
             using(NewsterContext nc = new NewsterContext())
             {
+                ///Find article and delete it
                 int idToDelete = int.Parse(Request["articleIdDelete"]);
 
                 Article tmpArticle = nc.Articles.Where(x => x.ArticleId == idToDelete).First();
@@ -126,12 +127,19 @@ namespace news.Controllers
             }
         }
 
+        /// <summary>
+        /// Approve new user that have registred on the site
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Approve()
         {
+
+            ///Get id from view
             int idToApprove = int.Parse(Request["approveId"]);
 
             using(NewsterContext nc = new NewsterContext())
             {
+                ///Set confirmed
                 nc.Users.Where(x => x.UserId == idToApprove).First().Confirmed = true;
                 nc.SaveChanges();
             }

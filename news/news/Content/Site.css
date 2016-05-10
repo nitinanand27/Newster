@@ -130,3 +130,8 @@ font-size: 18px;
 #hrhr {
     margin: 10px;
 }
+
+.info-text{
+    color:red;
+    font-size:14px;
+}
