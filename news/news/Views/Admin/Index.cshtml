@@ -13,7 +13,7 @@
 
         @*Form for adding article*@
         <div class="col-xs-12 col-md-12 form">
-            <p style="color:red">@errorMessage</p>
+            <p class="info-text">@errorMessage</p>
             <center>
                 <form method="post" action="/Admin/AddArticle">
                     <h2 id="createh2">News</h2>
@@ -62,7 +62,7 @@
                         </div>
                     }
                 }
-                else { <p style="color:red">There is no articles published yet that you have the rights to alter.</p>}
+                else { <p class="info-text">There is no articles published yet that you have the rights to alter.</p>}
 
             </center>
         </div>
@@ -87,12 +87,11 @@
                     }
 
                     else
-                    { <p style="color:red">No new members to approve</p> }
+                    { <p class="info-text">No new members to approve</p> }
 
                 </center>
             </div>
-        }
-       
+        }  
     </div>
 </div>
 
