@@ -135,3 +135,6 @@ font-size: 18px;
     color:red;
     font-size:14px;
 }
+.pbreak {
+    word-break: break-all;
+}
