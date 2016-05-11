@@ -70,14 +70,14 @@
         {
             <div class="col-xs-12 col-md-12 form">
                 <center>
-                    <h2>Approve users</h2>
+                    <h2 id="nitin">Approve users</h2>
                     <hr />
                     @if (userList.Count() > 0)
                     {
                         foreach (var u in userList)
                         {
                             <div>
-                                <h4>@u.UserName</h4>
+                                <h4 id="nitinn">@u.UserName</h4>
                                 <form method="post" action="/Admin/Approve">
                                     <input name="approveId" type="hidden" value="@u.UserId" />
                                     <button type="submit" class="btn btn-success">Approve</button>
@@ -94,7 +94,3 @@
         }  
     </div>
 </div>
-
-<p>
-    <a href="/Default/Index">Back to Articles</a>
-</p>
