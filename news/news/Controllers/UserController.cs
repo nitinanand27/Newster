@@ -20,7 +20,7 @@ namespace news.Controllers
             string tmpPassword = HelpClass.Encrypt(Request["registerPassword"]);
 
             if(!HelpClass.ValidateEmail(tmpEmail) || tmpUsername.Length <= 1 || 
-                tmpUsername.Length > 15 || tmpPassword.Length>5)
+                tmpUsername.Length > 15 || tmpPassword.Length<6)
             {
 
                 ///Return to login/register -view to try again
