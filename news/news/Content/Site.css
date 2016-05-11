@@ -143,4 +143,5 @@ font-size: 18px;
 }
 #nitinn {
     color: white;
+    word-break: break-all;
 }
