@@ -19,10 +19,12 @@ namespace news.Controllers
             string tmpEmail = Request["registerEmail"];
             string tmpPassword = HelpClass.Encrypt(Request["registerPassword"]);
 
-            if(!HelpClass.ValidateEmail(tmpEmail) && tmpUsername.Length > 1)
+            if(!HelpClass.ValidateEmail(tmpEmail) || tmpUsername.Length <= 1 || 
+                tmpUsername.Length > 15 || tmpPassword.Length>5)
             {
+
                 ///Return to login/register -view to try again
-                TempData["error"] = "To short username and/or invalid email!";
+                TempData["error"] = "Please check username, email and password!";
                 return Redirect("/Default/Login");
             }
 
